@@ -1,0 +1,49 @@
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+  }
+
+  table, th, td {
+    border: 1px solid #f1f1f1;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+
+  .mode {
+    font-size: 18px;
+  }
+
+  input:not(disabled) {
+    font-weight: bold;
+    color: black;
+  }
+
+  button {
+    padding: 4px 8px;
+    background: #0078d4;
+    color: #ffffff;
+  }
+
+  button:disabled {
+    padding: 4px 8px;
+    background: #ccc;
+    color: #666;
+  }
+
+  input[type=radio] {
+    position: relative;
+    z-index: 1;
+  }
+
+  input[type=radio] + label {
+    padding: 8px 4px 8px 30px;
+    margin-left: -30px;
+  }
+
+  input[type=radio]:checked + label {
+    background: #0078d4;
+    color: #ffffff;
+  }
