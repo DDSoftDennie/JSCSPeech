@@ -1,13 +1,23 @@
   // status fields and start button in UI
   var phraseDiv;
   var resultDiv;
-  var startSpeakTextAsyncButton;
+  var readAloudButton;
 
   // subscription key and region for speech services.
   var subscriptionKey, serviceRegion;
   var SpeechSDK;
   var synthesizer;
 
+  document.addEventListener("DOMContentLoaded", function (){
+    readAloudButton = document.getElementById("readAloudButton");
+    resultDiv = document.getElementById("resultDiv");
+
+    subscriptionKey = prompt("Subscription key: ");
+    resultDiv.innerHTML = subscriptionKey;
+  }
+  )
+
+/*
   document.addEventListener("DOMContentLoaded", function () {
     startSpeakTextAsyncButton = document.getElementById("startSpeakTextAsyncButton");
     subscriptionKey = document.getElementById("subscriptionKey");
@@ -68,3 +78,5 @@
       }
     }
   });
+
+  */
