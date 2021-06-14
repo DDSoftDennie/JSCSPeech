@@ -18,29 +18,37 @@
     resultDiv = document.getElementById("resultDiv");
     subscriptionKey = prompt("Subscription key: ");
     serviceRegion = "westeurope";
-    resultDiv.innerHTML = subscriptionKey + "<br/>" + serviceRegion;
+
+    var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey, serviceRegion);
+    synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
+    if(speechConfig != null)
+    {
+      resultDiv.innerHTML = "<strong> Connected! </strong>";
+    }
 
     if (!!window.SpeechSDK) {
       SpeechSDK = window.SpeechSDK;
       readAloudButton.disabled = false;
+     
     } else {
       readAloudButton.disabled = true;
     }
   }  
 
-  function readAloud()
+function readHead()
+{
+  welcomeDiv = document.getElementById("welcomeDiv");
+  var welcome = document.getElementById("welcomeHead").innerText;
+  DDText = welcome;
+  welcomeDiv.innerHTML += DDText + "<br />";
+  readAloud(DDText);
+}
+
+
+  function readAloud(toRead)
   {
-
-    welcomeDiv = document.getElementById("welcomeDiv");
-    var welcome = document.getElementById("welcomeHead").innerText;
-    DDText = welcome;
-    welcomeDiv.innerHTML += DDText + "<br />";
-    
-    var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey, serviceRegion);
-
-    synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
     synthesizer.speakTextAsync(
-        DDText,
+        toRead,
       function (result) {
         readAloudButton.disabled = false;
         if (result.reason === SpeechSDK.ResultReason.SynthesizingAudioCompleted) {
