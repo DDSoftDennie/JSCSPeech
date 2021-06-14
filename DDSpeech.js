@@ -1,6 +1,7 @@
-  // status fields and start button in UI
+  // UI
   var phraseDiv;
   var resultDiv;
+  var welcomeDiv;
   var readAloudButton;
   var DDText;
 
@@ -12,23 +13,30 @@
 
  function onload()
   {
+
+    //RESULTDIV == CONNECTION RIGHT OR WRONG? RESULT == EVERYTHING IS OK
+    resultDiv = document.getElementById("resultDiv");
+    subscriptionKey = prompt("Subscription key: ");
+    serviceRegion = "westeurope";
+    resultDiv.innerHTML = subscriptionKey + "<br/>" + serviceRegion;
+
     if (!!window.SpeechSDK) {
       SpeechSDK = window.SpeechSDK;
       readAloudButton.disabled = false;
+    } else {
+      readAloudButton.disabled = true;
     }
-   // resultDiv.innerHTML = "Loaded";
-    document.getElementById("resultDiv").innerHTML = "Loaded";
   }  
 
   function readAloud()
   {
-    subscriptionKey = prompt("Subscription key: ");
-    serviceRegion = "westeurope";
-    document.getElementById("resultDiv").innerHTML = subscriptionKey;
+
+    welcomeDiv = document.getElementById("welcomeDiv");
     var welcome = document.getElementById("welcomeHead").innerText;
-    document.getElementById("resultDiv").innerHTML += "<br/>" + welcome;
     DDText = welcome;
-    var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey.value, serviceRegion.value);
+    welcomeDiv.innerHTML += DDText + "<br />";
+    
+    var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey, serviceRegion);
 
     synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
     synthesizer.speakTextAsync(
@@ -36,9 +44,9 @@
       function (result) {
         readAloudButton.disabled = false;
         if (result.reason === SpeechSDK.ResultReason.SynthesizingAudioCompleted) {
-          resultDiv.innerHTML += "synthesis finished for [" + inputText + "].\n";
+          welcomeDiv.innerHTML += "synthesis finished for [" + inputText + "].\n";
         } else if (result.reason === SpeechSDK.ResultReason.Canceled) {
-          resultDiv.innerHTML += "synthesis failed. Error detail: " + result.errorDetails + "\n";
+          welcomeDiv.innerHTML += "synthesis failed. Error detail: " + result.errorDetails + "\n";
         }
         window.console.log(result);
         synthesizer.close();

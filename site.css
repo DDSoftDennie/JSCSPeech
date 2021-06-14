@@ -1,8 +1,29 @@
 body{
-    background-color: lightgoldenrodyellow;
+    background-color: #ffffff;
+    }
+
+
+    h1{
+        color: blue;
+    }
+
+.left{
+    float: left;
+    border: 1px solid blue;
+    padding: 5px;
+    margin: 5px;
 }
 
-
-h1{
-    color: blue;
+.error
+{
+    border: 3px solid red;
+    color: red;
+    font-weight: bold;
+}
+.right{
+    display: block;
+    float:right;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid lightblue;
 }

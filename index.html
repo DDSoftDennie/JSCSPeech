@@ -2,23 +2,16 @@
 
 <head>
     <title>JS Cognitive Speech </title>
-
-    <style>
-        body{
-        background-color: lightgoldenrodyellow;
-        }
-
-
-        h1{
-            color: blue;
-        }
-    </style>  
+    <link rel="stylesheet" href="site.css">
 </head>
 
-<body>
+<body onload="onload()">
     <h1 id ="welcomeHead">Welcome to JS Cognitive Speech! </h1>
     <button id="readAloudButton" onclick="readAloud()">Read aloud</button>
-    <div id="resultDiv">
+    <div id="resultDiv" class="left">
+
+    </div>
+    <div id="welcomeDiv" class="right">
 
     </div>
 
