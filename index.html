@@ -6,17 +6,21 @@
     </head>
 
     <body onload="onload()">
-        <h1 id ="welcomeHead">Welcome to JS Cognitive Speech! </h1>
-        <button id="readAloudButton" onclick="readHead()">🔊</button>
+        <div class="row">
+            <div id="connectionDiv" class="left success">
+
+            </div>
+            <div id="metricsDiv" class="right warning">
+    
+            </div>
+        </div>
+        <div class="row">
+            <h1 id ="welcomeHead">Welcome to JS Cognitive Speech! </h1>
+            <button id="readAloudButton" onclick="readHead()">🔊</button>
+        </div>
        
-        <div id="resultDiv" class="left success">
-
-        </div>
-        <div id="welcomeDiv" class="right">
-
-        </div>
-
-
+       
+   
         <!-- Speech SDK reference sdk. -->
         <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
         <script src="DDSpeech.js"></script>

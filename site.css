@@ -25,10 +25,14 @@ body{
 }
 .right{
     display: block;
-    float:left;
-    padding: 50px;
+    float: right;
+    padding: 5px;
     margin: 5px;
-    border: 1px solid lightblue;
+    border: 1px solid darkred;
+}
+
+.row{
+    display:table-row;
 }
 
 button{

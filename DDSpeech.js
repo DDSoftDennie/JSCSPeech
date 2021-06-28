@@ -1,7 +1,7 @@
   // UI
   var phraseDiv;
   var resultDiv;
-  var welcomeDiv;
+  var metricsDiv;
   var readAloudButton;
   var DDText;
 
@@ -10,12 +10,15 @@
   var SpeechSDK;
   var synthesizer;
 
+  // metrics
+  var totalChar = 0;
+
 
  function onload()
   {
 
-    //RESULTDIV == CONNECTION RIGHT OR WRONG? RESULT == EVERYTHING IS OK
-    resultDiv = document.getElementById("resultDiv");
+    //CONNECTIONDIV == CONNECTION RIGHT OR WRONG? RESULT == EVERYTHING IS OK
+    connectionDiv = document.getElementById("connectionDiv");
     subscriptionKey = prompt("Subscription key: ");
     serviceRegion = "westeurope";
 
@@ -23,7 +26,7 @@
     synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
     if(speechConfig != null)
     {
-      resultDiv.innerHTML = "<strong> Connected! </strong>";
+      connectionDiv.innerHTML = "<strong> Connected! ❤ </strong>";
     }
 
     if (!!window.SpeechSDK) {
@@ -37,11 +40,12 @@
 
 function readHead()
 {
-  welcomeDiv = document.getElementById("welcomeDiv");
+  metricsDiv = document.getElementById("metricsDiv");
   var welcome = document.getElementById("welcomeHead").innerText;
   DDText = welcome;
-  welcomeDiv.innerHTML += DDText + "<br />";
+  totalChar = totalChar +  DDText.toString().length;
   readAloud(DDText);
+  metricsDiv.innerHTML = "Total spoken Characters: " +  totalChar;
 }
 
 
